@@ -17,8 +17,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install Gradle
-        run: sudo apt-get update && sudo apt-get install -y gradle
+      - name: Download Gradle 8.5
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.5-bin.zip
+          unzip -q gradle-8.5-bin.zip
+          ./gradle-8.5/bin/gradle --version
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
+          ls $ANDROID_HOME || ls /opt/android-sdk || ls /usr/lib/android-sdk || true
 
       - name: Create Android App from index.html
         run: |
@@ -116,7 +122,7 @@ jobs:
           EOF
 
       - name: Build APK
-        run: gradle assembleDebug --stacktrace
+        run: ./gradle-8.5/bin/gradle assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
