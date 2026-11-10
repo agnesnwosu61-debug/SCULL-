@@ -8,9 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      ANDROID_HOME: /usr/lib/android-sdk
-      ANDROID_SDK_ROOT: /usr/lib/android-sdk
     steps:
       - uses: actions/checkout@v4
 
@@ -19,6 +16,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.2
 
       - name: Create Android App from index.html
         run: |
@@ -87,9 +89,7 @@ jobs:
           EOF
 
       - name: Build APK
-        run: |
-          gradle wrapper --gradle-version 8.2 || true
-          ./gradlew assembleDebug
+        run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
