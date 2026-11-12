@@ -1,6 +1,6 @@
 name: Build Scull Video APK
 
-on:
+"on":
   push:
     branches: [ main ]
   workflow_dispatch:
