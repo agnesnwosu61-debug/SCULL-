@@ -247,4 +247,7 @@ $('#q').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch()});$('#cmi')
 document.addEventListener('visibilitychange',()=>{if(document.hidden)cmd('pauseVideo')});
 const net=()=>{$('#off').style.display=offline()?'block':'none'};addEventListener('offline',net);addEventListener('online',()=>{net();if(act&&act.dataset.off)mount(act)});net();
 setSnd();if(location.hash==='#test'){show([{id:'dQw4w9WgXcQ',title:'Test video',ch:'Test',chId:'',th:'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg',av:''}],0,'Test')}else if(key){const n=L('sc_next',null);if(n&&n.length){W('sc_next',null);show(n,0,'Trending');seen(n);setTimeout(warm,3000)}else load(pick(),'Trending',true).then(()=>setTimeout(warm,3000))}else{hideSplash();$('#setup').classList.add('on')}
+<script>
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }
+window.addEventListener('online', ()=>{ location.reload(); });
 </script></body></html>
