@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{background:#000;color:#fff;font-family:sans-serif;text-align:center;padding-top:100px;margin:0}
+h1{font-size:28px;margin:10px}
+p{color:#aaa}
+button{background:#fff;color:#000;border:0;padding:14px 35px;border-radius:30px;font-size:16px;font-weight:bold;margin-top:20px}
+.logo{font-size:40px;font-weight:900}
+.logo span{color:#FE2C55}
+</style>
+</head>
+<body>
+<div class="logo">SCULL<span>.</span></div>
+<div style="font-size:60px;margin:20px">⟳</div>
+<h1>No internet connection</h1>
+<p>Connect to the internet and try again.</p>
+<button onclick="location.reload()">Retry</button>
+<br><br>
+<p style="font-size:12px">SCULL - Stay connected</p>
+<script>
+setInterval(()=>{ if(navigator.onLine) location.href='index.html'; }, 2000);
+</script>
+</body>
+</html>
