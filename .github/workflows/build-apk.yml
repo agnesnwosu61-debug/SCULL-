@@ -100,6 +100,21 @@ jobs:
           </resources>
           EOF
           cp index.html app/src/main/assets/index.html
+          python3 -c "
+          import pathlib
+          p = pathlib.Path('app/src/main/assets/index.html')
+          t = p.read_text()
+          # Remove the stray second <script> block that breaks all JS
+          bad = '''<script>
+          if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }
+          window.addEventListener('online', ()=>{ location.reload(); });
+          </script>'''
+          t = t.replace(bad, '')
+          # Safety: if splash still stuck after 4s, hide it and show error
+          t = t.replace('</body>', '<script>setTimeout(()=>{var sp=document.getElementById(\"splash\"); if(sp) sp.classList.add(\"off\");},4000);</script></body>')
+          p.write_text(t)
+          print('patched index.html, removed stray script')
+          "
           ls -lh app/src/main/assets/
 
       - name: Build APK
