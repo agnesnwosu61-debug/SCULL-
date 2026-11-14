@@ -1,22 +1,45 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SCULL JavaScript Test</title>
-</head>
-<body style="background:white;text-align:center;padding:50px;font-family:Arial">
-
-<h1 style="color:#D4A514">SCULL TEST</h1>
-
-<p id="result">Checking JavaScript...</p>
-
-<script>
-document.getElementById("result").innerHTML =
-"JAVASCRIPT IS WORKING!";
-
-document.getElementById("result").style.color = "green";
-document.getElementById("result").style.fontWeight = "bold";
-</script>
-
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://www.googleapis.com"><link rel="preconnect" href="https://i.ytimg.com"><link rel="preconnect" href="https://www.youtube-nocookie.com"><link rel="dns-prefetch" href="https://yt3.ggpht.com">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><link rel="icon" href="icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Scull"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#0A0A0A">
+<title>Scull Video</title>
+<style>
+:root{--red:#D4A514;box-sizing:border-box;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;background:#0A0A0A;color:#F4EFE0;font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+input{font:inherit;color:#F4EFE0;background:#161616;border:1px solid #2A2410;border-radius:12px;padding:11px 12px;width:100%;outline:none}
+input:focus,button:focus-visible{outline:2px solid #fff}
+#app{height:100%;max-width:480px;margin:0 auto;display:flex;flex-direction:column;position:relative;background:#0A0A0A;padding-top:env(safe-area-inset-top,0px)}
+main{flex:1;position:relative;min-height:0;overflow:hidden}
+.view{position:absolute;inset:0;display:none;overflow-y:auto}.view.on{display:block}
+nav{display:flex;height:56px;background:#0A0A0A;padding-bottom:env(safe-area-inset-bottom,0px);height:calc(56px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;color:#8F8660;padding-bottom:0}
+nav button.on{color:#D4A514}nav svg{width:24px;height:24px}
+nav .plus span{width:44px;height:30px;border-radius:9px;background:#D4A514;color:#0A0A0A;display:grid;place-items:center;font:700 22px/1 system-ui;box-shadow:0 0 0 3px #5a4506}
+#v-feed{background:#0A0A0A;color:#fff}.view:not(#v-feed){background:#0A0A0A}#v-feed .empty{color:#C9BE95}.msg a{display:inline-block;margin-top:10px;text-decoration:none}
+#feed{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}#feed::-webkit-scrollbar{display:none}
+.s{height:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;overflow:hidden;background:#0A0A0A}
+.s .th{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.8)}
+.pl{position:absolute;inset:0;overflow:hidden}
+.pl iframe,.pl video{position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none;opacity:0;transition:opacity .35s}
+.pl iframe{width:max(100%,177.78vh);height:calc(100% + 160px);min-width:100%}
+.pl .ok{opacity:1}
+.tap{position:absolute;inset:0;z-index:2}
+.shade{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(rgba(0,0,0,.5),transparent 18%,transparent 55%,rgba(0,0,0,.8))}
+.top{position:absolute;top:10px;left:0;right:0;z-index:6;display:flex;justify-content:center;font-weight:700;text-shadow:0 1px 6px #000}
+.top button.snd{position:absolute;right:12px;top:-2px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.4);display:grid;place-items:center}
+.info{position:absolute;z-index:5;left:12px;right:78px;bottom:16px;text-shadow:0 1px 6px #000}
+.info b{font-size:16px}.info p{margin:6px 0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mus{display:flex;gap:6px;font-size:13px;white-space:nowrap;overflow:hidden}.mus span{display:inline-block;animation:mq 9s linear infinite}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-30%)}}
+.rail{position:absolute;z-index:5;right:8px;bottom:16px;display:flex;flex-direction:column;align-items:center;gap:15px}
+.rail button{display:flex;flex-direction:column;align-items:center;font-size:12px;font-weight:700;gap:2px;text-shadow:0 1px 4px #000}
+.rail svg{width:34px;height:34px;fill:#fff;filter:drop-shadow(0 1px 4px rgba(0,0,0,.6))}
+.rail .lk.on svg{fill:#D4A514}.rail .bm.on svg{fill:#F2C94C}
+.av{width:46px;height:46px;border-radius:50%;border:2px solid #D4A514;object-fit:cover;background:#333;display:block}
+.avw{position:
