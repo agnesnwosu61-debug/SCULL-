@@ -2,35 +2,21 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SCULL TEST</title>
-<style>
-body {
-  background: white;
-  color: black;
-  font-family: Arial;
-  text-align: center;
-  padding: 50px 15px;
-}
-h1 {
-  color: #D4A514;
-  font-size: 32px;
-}
-.box {
-  background: black;
-  color: white;
-  padding: 25px;
-  border-radius: 15px;
-}
-</style>
+<title>SCULL JavaScript Test</title>
 </head>
-<body>
+<body style="background:white;text-align:center;padding:50px;font-family:Arial">
 
-<div class="box">
-<h1>SCULL TEST</h1>
-<p>Congratulations!</p>
-<p>Your Android WebView is displaying HTML.</p>
-<p>We are testing your application.</p>
-</div>
+<h1 style="color:#D4A514">SCULL TEST</h1>
+
+<p id="result">Checking JavaScript...</p>
+
+<script>
+document.getElementById("result").innerHTML =
+"JAVASCRIPT IS WORKING!";
+
+document.getElementById("result").style.color = "green";
+document.getElementById("result").style.fontWeight = "bold";
+</script>
 
 </body>
 </html>
